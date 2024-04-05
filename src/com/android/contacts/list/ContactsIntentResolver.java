@@ -84,11 +84,7 @@ public class ContactsIntentResolver {
         } else if (Intent.ACTION_PICK.equals(action)) {
             final String resolvedType = intent.resolveType(mContext);
             if (Contacts.CONTENT_TYPE.equals(resolvedType)) {
-                if (intent.getBooleanExtra(Intent.EXTRA_ALLOW_MULTIPLE, false)) {
-                    request.setActionCode(ContactsRequest.ACTION_PICK_CONTACTS);
-                } else {
-                    request.setActionCode(ContactsRequest.ACTION_PICK_CONTACT);
-                }
+                request.setActionCode(ContactsRequest.ACTION_PICK_CONTACT);
             } else if (People.CONTENT_TYPE.equals(resolvedType)) {
                 request.setActionCode(ContactsRequest.ACTION_PICK_CONTACT);
                 request.setLegacyCompatibilityMode(true);
